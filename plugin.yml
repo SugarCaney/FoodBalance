@@ -1,0 +1,8 @@
+name: FoodBalance
+main: nl.SugCube.FoodBalance.Main.FoodBalance
+version: '1'
+description: >
+             Be aware of your eat-stuff!
+commands:
+  health:
+    description: Shows your FoodBalance-stats
