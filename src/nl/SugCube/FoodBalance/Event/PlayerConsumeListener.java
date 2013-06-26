@@ -1,5 +1,6 @@
 package nl.SugCube.FoodBalance.Event;
 
+import nl.SugCube.FoodBalance.Main.Const;
 import nl.SugCube.FoodBalance.Main.FoodBalance;
 
 import org.bukkit.Material;
@@ -21,12 +22,8 @@ public class PlayerConsumeListener implements Listener {
 		
 		if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
 			if (e.getClickedBlock().getTypeId() == 92) {
-				value = plugin.glucose.get(e.getPlayer());
-				value += 1;
-				plugin.glucose.remove(e.getPlayer());
-				plugin.glucose.put(e.getPlayer(), value);
 				value = plugin.carbohydrates.get(e.getPlayer());
-				value += 1;
+				value += 2;
 				plugin.carbohydrates.remove(e.getPlayer());
 				plugin.carbohydrates.put(e.getPlayer(), value);
 			}
@@ -41,8 +38,6 @@ public class PlayerConsumeListener implements Listener {
 		
 		if (e.getItem().getType() == Material.GOLDEN_CARROT || e.getItem().getType() == Material.GOLDEN_APPLE) {
 			value = 0;
-			plugin.glucose.remove(e.getPlayer());
-			plugin.glucose.put(e.getPlayer(), value);
 			plugin.proteins.remove(e.getPlayer());
 			plugin.proteins.put(e.getPlayer(), value);
 			plugin.vitamins.remove(e.getPlayer());
@@ -52,22 +47,22 @@ public class PlayerConsumeListener implements Listener {
 		}
 
 		if (e.getItem().getType() == Material.APPLE || e.getItem().getType() == Material.MELON) {
-			value = plugin.glucose.get(e.getPlayer());
+			value = plugin.carbohydrates.get(e.getPlayer());
 			value += 1;
-			plugin.glucose.remove(e.getPlayer());
-			plugin.glucose.put(e.getPlayer(), value);
+			plugin.carbohydrates.remove(e.getPlayer());
+			plugin.carbohydrates.put(e.getPlayer(), value);
 		}
 		
-		if (e.getItem().getType() == Material.PUMPKIN_PIE || e.getItem().getType() == Material.COOKIE) {
-			value = plugin.glucose.get(e.getPlayer());
+		if (e.getItem().getType() == Material.COOKIE) {
+			value = plugin.carbohydrates.get(e.getPlayer());
 			value += 2;
-			plugin.glucose.remove(e.getPlayer());
-			plugin.glucose.put(e.getPlayer(), value);
+			plugin.carbohydrates.remove(e.getPlayer());
+			plugin.carbohydrates.put(e.getPlayer(), value);
 		}
 		
 		if (e.getItem().getType() == Material.PUMPKIN_PIE) {
 			value = plugin.vitamins.get(e.getPlayer());
-			value += 1;
+			value += 2;
 			plugin.vitamins.remove(e.getPlayer());
 			plugin.vitamins.put(e.getPlayer(), value);
 		}
@@ -97,8 +92,7 @@ public class PlayerConsumeListener implements Listener {
 			plugin.proteins.put(e.getPlayer(), value);
 		}
 		
-		if (e.getItem().getType() == Material.COOKIE || e.getItem().getType() == Material.POISONOUS_POTATO ||
-				e.getItem().getType() == Material.PUMPKIN_PIE) {
+		if (e.getItem().getType() == Material.COOKIE || e.getItem().getType() == Material.POISONOUS_POTATO) {
 			value = plugin.carbohydrates.get(e.getPlayer());
 			value += 1;
 			plugin.carbohydrates.remove(e.getPlayer());
@@ -115,7 +109,7 @@ public class PlayerConsumeListener implements Listener {
 		
 		if (e.getItem().getType() == Material.MILK_BUCKET) {
 			plugin.hydration.remove(player);
-			plugin.hydration.put(player, 615);
+			plugin.hydration.put(player, Const.HYDRATION_START);
 			e.getPlayer().removePotionEffect(PotionEffectType.CONFUSION);
 		}
 		
@@ -126,9 +120,9 @@ public class PlayerConsumeListener implements Listener {
 				e.getPlayer().removePotionEffect(PotionEffectType.SLOW);
 				e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
 			}
-			value += 400;
-			if (value >= 615) {
-				value = 615;
+			value += 600;
+			if (value >= Const.HYDRATION_START) {
+				value = Const.HYDRATION_START;
 			}
 			plugin.hydration.put(player, value);
 		}
@@ -140,9 +134,9 @@ public class PlayerConsumeListener implements Listener {
 				e.getPlayer().removePotionEffect(PotionEffectType.SLOW);
 				e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
 			}
-			value += 200;
-			if (value >= 615) {
-				value = 615;
+			value += 400;
+			if (value >= Const.HYDRATION_START) {
+				value = Const.HYDRATION_START;
 			}
 			plugin.hydration.put(player, value);
 			e.getPlayer().removePotionEffect(PotionEffectType.SLOW);

@@ -56,10 +56,6 @@ public class PlayerDeathListener implements Listener {
 				e.setDeathMessage(deathProteinsExtra.replaceAll("%player%", player.getName()));
 				plugin.damageCause.remove(player);
 				plugin.damageCause.put(player, null);
-			} else if (plugin.damageCause.get(player).equalsIgnoreCase("glucose")) {
-				e.setDeathMessage(deathGlucose.replaceAll("%player%", player.getName()));
-				plugin.damageCause.remove(player);
-				plugin.damageCause.put(player, null);
 			}
 		}
 		
@@ -80,11 +76,6 @@ public class PlayerDeathListener implements Listener {
 		plugin.vitamins.put(e.getEntity(), 0);
 		plugin.vitaminsCount.remove(e.getEntity());
 		plugin.vitaminsCount.put(e.getEntity(), Const.LACK_OF_COUNTDOWN);
-		
-		plugin.glucose.remove(e.getEntity());
-		plugin.glucose.put(e.getEntity(), 0);
-		plugin.glucoseCount.remove(e.getEntity());
-		plugin.glucoseCount.put(e.getEntity(), Const.LACK_OF_COUNTDOWN);
 		
 		plugin.damageCause.remove(e.getEntity());
 		plugin.damageCause.put(e.getEntity(), null);
@@ -116,10 +107,6 @@ public class PlayerDeathListener implements Listener {
 	
 	public void setDeathMessageProteinsExtra(String s) {
 		deathProteinsExtra = s;
-	}
-	
-	public void setDeathMessageGlucose(String s) {
-		deathGlucose = s;
 	}
 
 }

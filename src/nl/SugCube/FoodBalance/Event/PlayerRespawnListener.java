@@ -35,11 +35,6 @@ public class PlayerRespawnListener implements Listener {
 		plugin.vitaminsCount.remove(player);
 		plugin.vitaminsCount.put(player, Const.LACK_OF_COUNTDOWN);
 		
-		plugin.glucose.remove(player);
-		plugin.glucose.put(player, 0);
-		plugin.glucoseCount.remove(player);
-		plugin.glucoseCount.put(player, Const.LACK_OF_COUNTDOWN);
-		
 		plugin.damageCause.remove(player);
 		plugin.damageCause.put(player, null);
 		

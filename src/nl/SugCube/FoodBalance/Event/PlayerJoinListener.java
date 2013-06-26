@@ -27,8 +27,6 @@ public class PlayerJoinListener implements Listener {
 		plugin.proteinsCount.put(player, Const.LACK_OF_COUNTDOWN);
 		plugin.vitamins.put(player, 0);
 		plugin.vitaminsCount.put(player, Const.LACK_OF_COUNTDOWN);
-		plugin.glucose.put(player, 0);
-		plugin.glucoseCount.put(player, 0);
 	}
 	
 }

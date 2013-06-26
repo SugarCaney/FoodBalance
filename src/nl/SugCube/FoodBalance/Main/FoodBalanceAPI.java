@@ -15,14 +15,14 @@ public class FoodBalanceAPI {
 	
 	public static void reset(Player player) {
 		value = 0;
-		p.glucose.remove(player);
-		p.glucose.put(player, value);
 		p.proteins.remove(player);
 		p.proteins.put(player, value);
 		p.vitamins.remove(player);
 		p.vitamins.put(player, value);
 		p.carbohydrates.remove(player);
 		p.carbohydrates.put(player, value);
+		p.hydration.remove(player);
+		p.hydration.put(player, Const.HYDRATION_START);
 	}
 	
 	public static void addHydration(Player player, int amount) {
@@ -33,8 +33,8 @@ public class FoodBalanceAPI {
 			player.removePotionEffect(PotionEffectType.SLOW_DIGGING);
 		}
 		value += 400;
-		if (value >= 615) {
-			value = 615;
+		if (value >= Const.HYDRATION_START) {
+			value = Const.HYDRATION_START;
 		}
 		p.hydration.put(player, value);
 	}
@@ -58,13 +58,6 @@ public class FoodBalanceAPI {
 		value += amount;
 		p.vitamins.remove(player);
 		p.vitamins.put(player, value);
-	}
-	
-	public static void addGlucose(Player player, int amount) {
-		value = p.glucose.get(player);
-		value += amount;
-		p.glucose.remove(player);
-		p.glucose.put(player, value);
 	}
 	
 }

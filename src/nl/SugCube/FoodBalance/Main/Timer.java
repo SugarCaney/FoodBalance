@@ -25,65 +25,13 @@ public class Timer implements Runnable {
 					
 					double total = plugin.carbohydrates.get(player) + plugin.proteins.get(player) +
 							plugin.vitamins.get(player);
-					double totalGlucose = total + plugin.glucose.get(player);
 					int value;
 					
 					if (total >= 9) {
 						
-						if (plugin.glucose.get(player) / totalGlucose >= 0.53) {
-							
-							value = plugin.glucoseCount.get(player);
-							value -= 1;
-							plugin.glucoseCount.remove(player);
-							plugin.glucoseCount.put(player, value);
-							
-							if (value == 119) {
-								player.sendMessage(Messages.GLUCOSE_STAGE_1);
-							}
-							if (value <= 120 && value > 90) {
-								if (ran.nextInt(10) == 0) {
-									player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (ran.nextInt(6) + 2) * 20, 4));
-								}
-							}
-							if (value == 90) {
-								player.sendMessage(Messages.GLUCOSE_STAGE_2);
-							}
-							if (value <= 90 && value > 60) {
-								if (ran.nextInt(8) == 0) {
-									player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (ran.nextInt(7) + 2) * 20, 6));
-								}
-								if (ran.nextInt(8) == 0) {
-									player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (ran.nextInt(7) + 2) * 20, 6));
-								}
-							}
-							if (value == 60) {
-								player.sendMessage(Messages.GLUCOSE_STAGE_3);
-							}
-							if (value <= 60) {
-								if (ran.nextInt(6) == 0) {
-									player.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, (ran.nextInt(8) + 6) * 20, 8));
-								}
-								if (ran.nextInt(6) == 0) {
-									player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (ran.nextInt(8) + 6) * 20, 8));
-								}
-								if (ran.nextInt(2) == 0) {
-									plugin.damageCause.remove(player);
-									plugin.damageCause.put(player, "glucose");
-									player.damage(1);
-									if (!(player.isDead())) {
-										plugin.damageCause.remove(player);
-										plugin.damageCause.put(player, null);
-									}
-								}
-							}
-							if (value <= 0) {
-								plugin.damageCause.remove(player);
-								plugin.damageCause.put(player, "glucose");
-								player.damage(999999);
-							}
-							
-						}
-						
+						/*
+						 * PROTEINS LACK
+						 */
 						if (plugin.proteins.get(player) / total < 0.1) {
 							
 							value = plugin.proteinsCount.get(player);
@@ -136,7 +84,11 @@ public class Timer implements Runnable {
 								player.damage(999999);
 							}
 							
-						} else if (plugin.proteins.get(player) / total > 0.65) {
+						}
+						/*
+						 * PROTEINS MUCH
+						 */
+						else if (plugin.proteins.get(player) / total > 0.65) {
 							
 							value = plugin.proteinsCount.get(player);
 							value -= 1;
@@ -186,7 +138,10 @@ public class Timer implements Runnable {
 							plugin.proteinsCount.remove(player);
 							plugin.proteinsCount.put(player, Const.LACK_OF_COUNTDOWN);
 						}
-
+						
+						/*
+						 * VITAMINS LACK
+						 */
 						if (plugin.vitamins.get(player) / total < 0.1) {
 							
 							value = plugin.vitaminsCount.get(player);
@@ -233,7 +188,11 @@ public class Timer implements Runnable {
 								player.damage(999999);
 							}
 							
-						} else if (plugin.vitamins.get(player) / total > 0.65) {
+						}
+						/*
+						 * VITAMINS MUCH
+						 */
+						else if (plugin.vitamins.get(player) / total > 0.65) {
 							
 							value = plugin.vitaminsCount.get(player);
 							value -= 1;
@@ -281,6 +240,9 @@ public class Timer implements Runnable {
 							plugin.vitaminsCount.put(player, Const.LACK_OF_COUNTDOWN);
 						}
 						
+						/*
+						 * CARBOHYDRATES LACK
+						 */
 						if (plugin.carbohydrates.get(player) / total < 0.1) {
 							
 							value = plugin.carbohydratesCount.get(player);
@@ -333,7 +295,11 @@ public class Timer implements Runnable {
 								player.damage(999999);
 							}
 							
-						} else if (plugin.carbohydrates.get(player) / total > 0.65) {
+						}
+						/*
+						 * CARBOHYDRATES MUCH
+						 */
+						else if (plugin.carbohydrates.get(player) / total > 0.65) {
 							
 							value = plugin.carbohydratesCount.get(player);
 							value -= 1;
@@ -391,6 +357,9 @@ public class Timer implements Runnable {
 						}
 					}
 					
+					/*
+					 * HYDRATION
+					 */
 					value = plugin.hydration.get(player);
 					plugin.hydration.remove(player);
 					value--;

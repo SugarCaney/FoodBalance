@@ -35,8 +35,6 @@ public class FoodBalance extends JavaPlugin {
 	public HashMap<Player, Integer> proteinsCount = new HashMap<Player, Integer>();
 	public HashMap<Player, Integer> vitamins = new HashMap<Player, Integer>();
 	public HashMap<Player, Integer> vitaminsCount = new HashMap<Player, Integer>();
-	public HashMap<Player, Integer> glucose = new HashMap<Player, Integer>();
-	public HashMap<Player, Integer> glucoseCount = new HashMap<Player, Integer>();
 	public HashMap<Player, String> damageCause = new HashMap<Player, String>();
 	
 	@Override
@@ -60,8 +58,6 @@ public class FoodBalance extends JavaPlugin {
 			this.proteinsCount.put(player, Const.LACK_OF_COUNTDOWN);
 			this.vitamins.put(player, 0);
 			this.vitaminsCount.put(player, Const.LACK_OF_COUNTDOWN);
-			this.glucose.put(player, 0);
-			this.glucoseCount.put(player, Const.LACK_OF_COUNTDOWN);
 		}
 	}
 	
@@ -77,8 +73,11 @@ public class FoodBalance extends JavaPlugin {
 			if (sender instanceof Player) {
 				Player player = (Player) sender;
 				if (args.length > 0) {
-					if (args[0].equalsIgnoreCase("setfood") || player.hasPermission("foodbalance.admin")) {
+					if (args[0].equalsIgnoreCase("setfood") && player.hasPermission("foodbalance.admin")) {
 						player.setFoodLevel(Integer.parseInt(args[1]));
+					} else if (args[0].equalsIgnoreCase("reset") && player.hasPermission("foodbalance.admin") &&
+							args.length >= 2) {
+						FoodBalanceAPI.reset(getServer().getPlayer(args[1]));
 					} else {
 						Stats.show(player);
 					}
