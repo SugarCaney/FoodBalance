@@ -1,0 +1,33 @@
+updates:
+  check-for-updates: true
+  notify-admin: true
+metrics:
+  enabled: true
+mysql:
+  enabled: false
+  host: hostname
+  port: 3306
+  database: name
+  username: root
+  password: password
+messages:
+  carbohydrates: "Carbohydrates"
+  carbohydrates-colour: "&e"
+  proteins: "Proteins"
+  proteins-colour: "&c"
+  vitamins: "Vitamins"
+  vitamins-colour: "&a"
+  water: "Hydration"
+  water-colour: "&b"
+  only-in-game: "&c[!!] Only in-game players can perform this command!"
+  usage-reset: "&c[!!] Usage: /fb reset <player>"
+  values-reset: "&aThe values of &6%player%&a have been reset!"
+  reload-ok: "&aReloaded FoodBalance %version%."
+  reload-fail: "&cFailed reloading FoodBalance %version%."
+  death-hydration: "%player% dried up"
+  death-carbohydrates-lack: "%player% died due to a lack of carbohydrates"
+  death-carbohydrates-much: "%player% ate too much carbohydrates and died"
+  death-vitamins-lack: "%player% died due to a lack of vitamins"
+  death-vitamins-much: "%player% ate too much vitamins and died"
+  death-proteins-lack: "%player% died due to a lack of proteins"
+  death-proteins-much: "%player% ate too much proteins and died"

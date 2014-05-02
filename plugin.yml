@@ -1,8 +1,13 @@
 name: FoodBalance
-main: nl.SugCube.FoodBalance.Main.FoodBalance
-version: '1.2'
+main: nl.SugCube.FoodBalance.FoodBalance
+version: '2.0'
+authors: [MrSugarCaney]
 description: >
-             Be aware of your eat-stuff!
+             Be aware of your eating!
 commands:
   health:
     description: Shows your FoodBalance-stats
+    aliases: [food, foodstats, fbstats, fbalancestats, foodbalancestats]
+  foodbalance:
+    description: Main command of FoodBalance
+    aliases: [fb, foodb, fbalance]
